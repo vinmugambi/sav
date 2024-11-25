@@ -10,7 +10,7 @@
     "start": "remix-serve ./build/server/index.js",
     "typecheck": "tsc",
     "prepare": "husky",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
