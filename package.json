@@ -12,7 +12,10 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix"
+    "*.{js,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@remix-run/node": "^2.15.0",
@@ -23,6 +26,8 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
     "@remix-run/dev": "^2.15.0",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
