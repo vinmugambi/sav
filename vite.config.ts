@@ -11,6 +11,7 @@ declare module "@remix-run/node" {
 export default defineConfig({
   plugins: [
     remix({
+      ignoredRouteFiles: ["**/__*.*", "**/*.test.{js,jsx,ts,tsx}"],
       future: {
         v3_fetcherPersist: true,
         v3_relativeSplatPath: true,
