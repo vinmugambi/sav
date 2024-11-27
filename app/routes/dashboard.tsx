@@ -1,6 +1,6 @@
 import type { LoaderFunction } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
-import type { Album, User } from "app/types";
+import type { Album, User, UserWithAlbumCount } from "app/types";
 import { getData } from "~/api";
 
 // fetch user on the server side
@@ -11,7 +11,7 @@ export const loader: LoaderFunction = async () => {
   ]);
 
   // Map album counts to each user
-  const usersWithAlbumCount = users.map((user) => ({
+  const usersWithAlbumCount: UserWithAlbumCount[] = users.map((user) => ({
     ...user,
     albumCount: albums.filter((album) => album.userId === user.id).length,
   }));

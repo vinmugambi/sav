@@ -1,6 +1,6 @@
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
-import { Link, useLoaderData } from "@remix-run/react";
-import { useState } from "react";
+import { Link, useFetcher, useLoaderData } from "@remix-run/react";
+import { useEffect, useState } from "react";
 import { getData } from "~/api";
 import type { Photo } from "~/types";
 
@@ -46,36 +46,22 @@ export const action: ActionFunction = async ({ request, params }) => {
     throw new Response("Failed to update photo title", { status: 500 });
   }
 
-  return await response.json();
+  return (await response.json()) as { title: string };
 };
 
 export default function PhotoPage() {
   const photo = useLoaderData<Photo>();
   const [isEditing, setIsEditing] = useState(false);
-  const [title, setTitle] = useState(photo.title);
+  const fetcher = useFetcher<{ title: string }>({ key: "edit title" });
 
-  const handleEdit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const form = event.currentTarget;
-
-    const formData = new FormData(form);
-    const updatedTitle = formData.get("title");
-
-    if (typeof updatedTitle === "string") {
-      const response = await fetch(`/photos/${photo.id}`, {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        setIsEditing(false);
-        const updatedPhoto = await response.json();
-        setTitle(updatedPhoto.title);
-      } else {
-        alert("Failed to update the title");
-      }
+  useEffect(() => {
+    if (fetcher.data) {
+      setIsEditing(false);
     }
-  };
+  }, [fetcher.data]);
+
+  const title = fetcher.data?.title ?? photo.title;
+  const isSubmitting = fetcher.state == "submitting";
 
   return (
     <main>
@@ -92,7 +78,11 @@ export default function PhotoPage() {
             </button>
           </>
         ) : (
-          <form onSubmit={handleEdit} className="flex flex-col">
+          <fetcher.Form
+            method="post"
+            action={`/photos/${photo.id}`}
+            className="flex flex-col"
+          >
             <input
               name="title"
               type="text"
@@ -100,7 +90,7 @@ export default function PhotoPage() {
               className="border rounded-xl p-2 mb-4"
             />
             <div className="flex gap-2">
-              <button type="submit" className="primary">
+              <button type="submit" disabled={isSubmitting} className="primary">
                 Save
               </button>
               <button
@@ -111,7 +101,7 @@ export default function PhotoPage() {
                 Cancel
               </button>
             </div>
-          </form>
+          </fetcher.Form>
         )}
       </div>
 

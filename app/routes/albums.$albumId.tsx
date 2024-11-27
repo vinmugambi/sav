@@ -37,7 +37,7 @@ export default function AlbumPage() {
         <h2 className="text-xl font-bold mb-4">Photos</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {photos.map((photo) => (
-            <Link to={`/photos/${photo.id}`} key={photo.id}>
+            <Link title={photo.title} to={`/photos/${photo.id}`} key={photo.id}>
               <img
                 src={photo.thumbnailUrl}
                 alt={photo.title}
