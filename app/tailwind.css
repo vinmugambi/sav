@@ -27,6 +27,10 @@ button.primary {
   @apply bg-blue-500 text-white;
 }
 
+button:disabled {
+  @apply bg-blue-300 text-white;
+}
+
 button.neutral {
   @apply bg-gray-200;
 }
