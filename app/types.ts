@@ -18,3 +18,7 @@ export interface Photo {
   url: string;
   thumbnailUrl: string;
 }
+
+export type UserWithAlbumCount = User & {
+  albumCount: number;
+};
