@@ -20,7 +20,7 @@ export const loader: LoaderFunction = async () => {
 };
 
 // render page with fetched data
-export default function Dashboard() {
+export default function HomePage() {
   const users = useLoaderData<(User & { albumCount: number })[]>();
 
   return (

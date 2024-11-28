@@ -8,7 +8,7 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export default function Index() {
+export default function LandingPage() {
   return (
     <div className="flex h-screen items-center justify-center">
       <header className="flex flex-col items-center gap-8">
