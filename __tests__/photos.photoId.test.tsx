@@ -2,7 +2,7 @@ import type { ActionFunctionArgs } from "@remix-run/node";
 import { createRemixStub } from "@remix-run/testing";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import PhotoPage from "~/routes/photos.$photoId";
+import PhotoPage from "~/routes/_app.photos.$photoId";
 import type { Photo } from "~/types";
 
 describe("Photo Page", () => {

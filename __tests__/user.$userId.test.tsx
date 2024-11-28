@@ -1,7 +1,7 @@
 import { createRemixStub } from "@remix-run/testing";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest"; // Ensure Vitest is installed
-import UserPage from "~/routes/users.$userId";
+import UserPage from "~/routes/_app.users.$userId";
 import type { Album, User } from "~/types";
 
 describe("User Page", () => {

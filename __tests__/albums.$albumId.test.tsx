@@ -1,7 +1,7 @@
 import { createRemixStub } from "@remix-run/testing";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import AlbumPage from "~/routes/albums.$albumId";
+import AlbumPage from "~/routes/_app.albums.$albumId";
 import type { Album, Photo } from "~/types";
 
 describe("Album Page", () => {

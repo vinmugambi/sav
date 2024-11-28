@@ -1,7 +1,7 @@
 import { createRemixStub } from "@remix-run/testing";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest"; // Ensure Vitest is installed
-import Dashboard from "~/routes/dashboard";
+import HomePage from "~/routes/_app.home";
 import type { UserWithAlbumCount } from "~/types";
 
 describe("Dashboard", () => {
@@ -25,7 +25,7 @@ describe("Dashboard", () => {
   const RemixStub = createRemixStub([
     {
       path: "/dashboard",
-      Component: Dashboard,
+      Component: HomePage,
       loader() {
         return Response.json(testData);
       },
