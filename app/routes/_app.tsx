@@ -5,7 +5,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
   const session = await sessionStorage.getSession(
     request.headers.get("cookie")
   );
-  const user = session.get("userId");
+  const user = session.get("email");
   if (!user) throw redirect("/login");
   return null;
 }
