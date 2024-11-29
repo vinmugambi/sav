@@ -6,7 +6,7 @@ import { Authed } from "./session.server";
 const authenticator = new Authenticator<Authed>();
 
 const appHost = process.env.APP_HOST ?? "http:localhost:5173";
-const redirectURI = appHost.replace(/\/^/, "") + "/login?oauth=github";
+const redirectURI = appHost.replace(/\/^/, "") + "?oauth=github";
 
 authenticator.use(
   new GitHubStrategy(
