@@ -22,7 +22,7 @@ export default function AlbumPage() {
   const { album, photos } = useLoaderData<{ album: Album; photos: Photo[] }>();
 
   return (
-    <main>
+    <div>
       <div className="mb-4">
         <h1 className="text-4xl font-serif mb-2 font-bold">{album.title}</h1>
         <Link
@@ -51,6 +51,6 @@ export default function AlbumPage() {
           ))}
         </div>
       </div>
-    </main>
+    </div>
   );
 }

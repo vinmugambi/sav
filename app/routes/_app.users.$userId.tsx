@@ -27,7 +27,7 @@ export default function UserPage() {
   const { user, albums } = useLoaderData<{ user: User; albums: Album[] }>();
 
   return (
-    <main>
+    <div>
       <div className="flex gap-4 mt-8">
         <div className="h-12 w-12 bg-gray-400 rounded-full"></div>
 
@@ -53,6 +53,6 @@ export default function UserPage() {
           ))}
         </ul>
       </div>
-    </main>
+    </div>
   );
 }

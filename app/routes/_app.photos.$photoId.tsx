@@ -64,7 +64,7 @@ export default function PhotoPage() {
   const isSubmitting = fetcher.state == "submitting";
 
   return (
-    <main>
+    <div>
       <Link to={`/albums/${photo.albumId}`}>
         <h3 className="text-blue-500 hover:underline">Back to Album</h3>
       </Link>
@@ -110,6 +110,6 @@ export default function PhotoPage() {
         alt={photo.title}
         className="w-full h-auto rounded-md mb-4"
       />
-    </main>
+    </div>
   );
 }

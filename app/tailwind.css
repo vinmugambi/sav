@@ -12,25 +12,29 @@ body {
 }
 
 main {
-  @apply p-6  min-h-screen max-w-2xl mx-auto;
+  @apply p-4 min-h-screen max-w-2xl mx-auto;
 }
 
 main h1 {
   @apply text-4xl font-serif mb-2 font-bold;
 }
 
-button {
+button,
+a.button {
   @apply px-4 py-2 text-sm font-medium rounded-2xl;
 }
 
-button.primary {
+button.primary,
+a.button.primary {
   @apply bg-blue-500 text-white;
 }
 
-button:disabled {
+button:disabled,
+a.button:disabled {
   @apply bg-blue-300 text-white;
 }
 
-button.neutral {
+button.neutral,
+a.button.neutral {
   @apply bg-gray-200;
 }

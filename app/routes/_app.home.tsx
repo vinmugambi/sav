@@ -24,7 +24,7 @@ export default function HomePage() {
   const users = useLoaderData<(User & { albumCount: number })[]>();
 
   return (
-    <main>
+    <div>
       <h1>People</h1>
       <ul className="flex flex-col">
         {users.map((user) => (
@@ -48,6 +48,6 @@ export default function HomePage() {
           </li>
         ))}
       </ul>
-    </main>
+    </div>
   );
 }
