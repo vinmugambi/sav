@@ -28,7 +28,7 @@ export default function LandingPage() {
           Share, discover and organize memories
         </h1>
 
-        <div className="flex justify-center gap-4 wrap">
+        <div className="flex -mt-4 mb-4 justify-center gap-4 wrap">
           <Form method="post" action=".?method=password">
             <input
               type="hidden"
