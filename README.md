@@ -1,40 +1,67 @@
-# Welcome to Remix!
+# Overview
 
-- 📖 [Remix docs](https://remix.run/docs)
+GramAlly app offers an interactive interface to interact with images hosted on https://jsonplaceholder.typicode.com/
 
-## Development
+It is hosted on Vercel at https://gramally-prod.vercel.app/
 
-Run the dev server:
+## Technology Stack
 
-```shellscript
+- [Remix version 2](https://remix.run/docs) with Vite
+- React JS (latest)
+- TypeScript
+- Tailwind CSS
+- Github Oauth
+- Vitest with React Testing Library
+- V8 for test coverage
+- Sentry for monitoring
+- Prettier for formatting
+- ESLint
+
+## Setup
+
+1. Navigate into the project folder using the terminal
+2. Install dependencies
+
+```bash
+npm i
+```
+
+3. Start development server
+
+```bash
 npm run dev
 ```
 
-## Deployment
+4. Visit http://localhost:5173 in your browser
 
-First, build your app for production:
+## Other useful commands
 
-```sh
-npm run build
-```
+### `npm run build`
 
-Then run the app in production mode:
+Build app in preparation for deployment
 
-```sh
-npm start
-```
+### `npm start`
 
-Now you'll need to pick a host to deploy it to.
+Start production server
 
-### DIY
+### `npm run lint`
 
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
+Checks for linting errors
 
-Make sure to deploy the output of `npm run build`
+This command is run automatically each time a new commit is initiated
 
-- `build/server`
-- `build/client`
+### `npm run test`
 
-## Styling
+Runs tests
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+This command is run automatically each time you push new commits
+
+### `npm run coverage`
+
+Generate coverage report
+
+## Disclaimers
+
+- Since the JSON placeholder server doesn't actually update data after `PUT` requests, the title in the Photo Page will revert to the initial one if page is reloaded.
+
+- Also the JSON placeholder server may timeout occasionally
