@@ -19,7 +19,7 @@ It is hosted on Vercel at https://gramally-prod.vercel.app/
 
 ## Setup
 
-1. Navigate into the project folder using the terminal
+1. Clone this repository and navigate into the project folder using the terminal
 2. Install dependencies
 
 ```bash
@@ -46,13 +46,13 @@ Start production server
 
 ### `npm run lint`
 
-Checks for linting errors
+Check for linting errors
 
 This command is run automatically each time a new commit is initiated
 
 ### `npm run test`
 
-Runs tests
+Run tests
 
 This command is run automatically each time you push new commits
 
@@ -60,8 +60,8 @@ This command is run automatically each time you push new commits
 
 Generate coverage report
 
-## Disclaimers
+## Disclaimer
 
-- Since the JSON placeholder server doesn't actually update data after `PUT` requests, the title in the Photo Page will revert to the initial one if page is reloaded.
+- Since the JSON Placeholder server doesn’t persist updates after PUT requests, the photo title will revert to its original value upon page reload.
 
-- Also the JSON placeholder server may timeout occasionally
+- Additionally, the JSON Placeholder server may occasionally experience timeouts.
