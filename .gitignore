@@ -8,3 +8,6 @@ node_modules
 
 # Sentry Config File
 .env.sentry-build-plugin
+
+# Test coverage
+coverage/
