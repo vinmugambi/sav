@@ -1,4 +1,5 @@
 import { vitePlugin as remix } from "@remix-run/dev";
+import { sentryVitePlugin } from "@sentry/vite-plugin";
 import { vercelPreset } from "@vercel/remix/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
@@ -12,6 +13,8 @@ declare module "@remix-run/node" {
 export default defineConfig({
   plugins: [
     remix({
+      buildDirectory: "build",
+      serverBuildFile: "index.js",
       ignoredRouteFiles: ["**/__*.*", "**/*.test.{js,jsx,ts,tsx}"],
       future: {
         v3_fetcherPersist: true,
@@ -23,5 +26,13 @@ export default defineConfig({
       presets: [vercelPreset()],
     }),
     tsconfigPaths(),
+    sentryVitePlugin({
+      org: "vukaborder",
+      project: "javascript-remix",
+    }),
   ],
+
+  build: {
+    sourcemap: true,
+  },
 });
