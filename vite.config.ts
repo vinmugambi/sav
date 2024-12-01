@@ -29,6 +29,7 @@ export default defineConfig({
     sentryVitePlugin({
       org: "vukaborder",
       project: "javascript-remix",
+      authToken: process.env.SENTRY_AUTH_TOKEN,
     }),
   ],
 
