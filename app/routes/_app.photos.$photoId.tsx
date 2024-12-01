@@ -1,7 +1,7 @@
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { Link, useFetcher, useLoaderData } from "@remix-run/react";
 import { useEffect, useState } from "react";
-import Spinner from "~/components/Spinner";
+import { Spinner } from "~/components/Spinner";
 import { getData } from "~/services/api.server";
 import type { Photo } from "~/types";
 
