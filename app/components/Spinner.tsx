@@ -1,10 +1,16 @@
 export function Spinner({ size = 4 }: { size?: number }) {
+  const pixelSize = `${size * 4}px`;
+
   return (
     <div role="status">
       <svg
         aria-hidden="true"
-        className={`w-${size} h-${size} text-gray-200 animate-spin  fill-blue-600`}
-        style={{ animationDuration: "500ms" }} // Faster spin
+        className="text-gray-200 animate-spin fill-blue-600"
+        style={{
+          width: pixelSize,
+          height: pixelSize,
+          animationDuration: "500ms", // Faster spin
+        }}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +32,7 @@ export function Spinner({ size = 4 }: { size?: number }) {
 export function PageLoadingIndicator() {
   return (
     <div className="flex h-[50vh] gap-2 justify-center items-center w-full">
-      <Spinner size={8} /> Loading...
+      <Spinner size={16} />
     </div>
   );
 }
