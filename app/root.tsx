@@ -28,6 +28,8 @@ export const links: LinksFunction = () => [
   },
 ];
 
+export const config = { runtime: "edge" };
+
 export async function action({ request }: ActionFunctionArgs) {
   const { searchParams } = new URL(request.url);
   const method = searchParams.get("method") as string;
