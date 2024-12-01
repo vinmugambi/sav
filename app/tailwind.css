@@ -21,7 +21,7 @@ main h1 {
 
 button,
 a.button {
-  @apply px-4 py-2 text-sm font-medium rounded-2xl;
+  @apply flex px-4 py-2 gap-2 items-center justify-center text-sm font-medium rounded-2xl  min-w-[6rem];
 }
 
 button.primary,
