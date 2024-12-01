@@ -26,7 +26,7 @@ export default function AlbumPage() {
     <div>
       <div className="mb-4 flex items-start gap-2">
         <BackButton ariaLabel="Back to user" to={`/users/${album.userId}`} />
-        <h1 className="text-4xl font-serif font-bold">{album.title} album</h1>
+        <h1 className="text-4xl font-serif font-bold">{album.title}</h1>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
