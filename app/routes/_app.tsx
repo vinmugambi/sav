@@ -1,5 +1,6 @@
 import { LoaderFunctionArgs, redirect } from "@remix-run/node";
-import { Link, Outlet, useLoaderData } from "@remix-run/react";
+import { Link, Outlet, useLoaderData, useNavigation } from "@remix-run/react";
+import Spinner from "~/components/Spinner";
 import { sessionStorage } from "~/services/session.server";
 
 export async function loader({ request }: LoaderFunctionArgs) {
@@ -14,6 +15,9 @@ export async function loader({ request }: LoaderFunctionArgs) {
 export default function AppLayout() {
   const email = useLoaderData<typeof loader>();
 
+  const navigation = useNavigation();
+  const isLoading = navigation.state === "loading";
+
   return (
     <main>
       <nav className="flex justify-between mb-6 wrap items-center">
@@ -27,7 +31,13 @@ export default function AppLayout() {
           </Link>
         </div>
       </nav>
-      <Outlet />
+      {isLoading ? (
+        <div className="h-[50vh] justify-center items-center">
+          <Spinner />
+        </div>
+      ) : (
+        <Outlet />
+      )}
     </main>
   );
 }
