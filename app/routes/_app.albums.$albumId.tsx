@@ -1,6 +1,7 @@
 import type { LoaderFunction } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import BackButton from "~/components/BackButton";
+import ImageWithPlaceholder from "~/components/ImageWithPlaceholder";
 import { getData } from "~/services/api.server";
 import type { Album, Photo } from "~/types";
 
@@ -32,12 +33,8 @@ export default function AlbumPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {photos.map((photo) => (
           <Link title={photo.title} to={`/photos/${photo.id}`} key={photo.id}>
-            <img
-              src={photo.thumbnailUrl}
-              alt={photo.title}
-              className="w-full h-auto rounded-md mb-2"
-            />
-            <h3 className="">{photo.title}</h3>
+            <ImageWithPlaceholder photo={photo} />
+            <h3 className="mt-2">{photo.title}</h3>
             <span className="text-blue-500 hover:underline text-sm">View</span>
           </Link>
         ))}

@@ -2,6 +2,7 @@ import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { useFetcher, useLoaderData } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import BackButton from "~/components/BackButton";
+import ImageWithPlaceholder from "~/components/ImageWithPlaceholder";
 import { Spinner } from "~/components/Spinner";
 import { getData } from "~/services/api.server";
 import type { Photo } from "~/types";
@@ -106,11 +107,7 @@ export default function PhotoPage() {
         )}
       </div>
 
-      <img
-        src={photo.url}
-        alt={photo.title}
-        className="w-full h-auto rounded-md mb-4"
-      />
+      <ImageWithPlaceholder photo={photo} />
     </div>
   );
 }
