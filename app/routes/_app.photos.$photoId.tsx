@@ -1,6 +1,7 @@
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
-import { Link, useFetcher, useLoaderData } from "@remix-run/react";
+import { useFetcher, useLoaderData } from "@remix-run/react";
 import { useEffect, useState } from "react";
+import BackButton from "~/components/BackButton";
 import { Spinner } from "~/components/Spinner";
 import { getData } from "~/services/api.server";
 import type { Photo } from "~/types";
@@ -12,12 +13,8 @@ export const loader: LoaderFunction = async ({ params }) => {
     throw new Response("Photo ID not provided", { status: 400 });
   }
 
-  try {
-    const photo = await getData<Photo>(`/photos/${photoId}`);
-    return photo;
-  } catch (error) {
-    throw new Response("Photo not found", { status: 404 });
-  }
+  const photo = await getData<Photo>(`/photos/${photoId}`);
+  return photo;
 };
 
 export const action: ActionFunction = async ({ request, params }) => {
@@ -66,14 +63,11 @@ export default function PhotoPage() {
 
   return (
     <div>
-      <Link to={`/albums/${photo.albumId}`}>
-        <h3 className="text-blue-500 hover:underline">Back to Album</h3>
-      </Link>
-
-      <div className="py-4">
+      <BackButton to={`/albums/${photo.albumId}`} ariaLabel="Back to Album" />
+      <div className="pb-4">
         {!isEditing ? (
           <>
-            <h1 className="text-2xl font-bold">{title}</h1>
+            <h1>{title}</h1>
             <button className="primary" onClick={() => setIsEditing(true)}>
               Edit Title
             </button>

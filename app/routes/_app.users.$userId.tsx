@@ -1,5 +1,6 @@
 import type { LoaderFunction } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
+import BackButton from "~/components/BackButton";
 import { getData } from "~/services/api.server";
 import type { Album, User } from "~/types";
 
@@ -10,17 +11,13 @@ export const loader: LoaderFunction = async ({ params }) => {
     throw new Response("User ID not provided", { status: 400 });
   }
 
-  try {
-    // Fetch the user and their albums in parallel
-    const [user, albums] = await Promise.all([
-      getData<User>(`/users/${userId}`),
-      getData<Album[]>(`/albums?userId=${userId}`),
-    ]);
+  // Fetch the user and their albums in parallel
+  const [user, albums] = await Promise.all([
+    getData<User>(`/users/${userId}`),
+    getData<Album[]>(`/albums?userId=${userId}`),
+  ]);
 
-    return { user, albums };
-  } catch (error) {
-    throw new Response("User not found", { status: 404 });
-  }
+  return { user, albums };
 };
 
 export default function UserPage() {
@@ -28,7 +25,8 @@ export default function UserPage() {
 
   return (
     <div>
-      <div className="flex gap-4 mt-8">
+      <BackButton to={"/home"} ariaLabel="Back to user list" />
+      <div className="flex gap-4 mt-4">
         <div className="h-12 w-12 bg-gray-400 rounded-full"></div>
 
         <div>
@@ -36,7 +34,7 @@ export default function UserPage() {
             {user.name}
           </Link>
           <div className="flex gap-2">
-            <div>{user.email}</div>
+            <div className="lowercase">{user.email}</div>
           </div>
         </div>
       </div>
@@ -44,7 +42,7 @@ export default function UserPage() {
       <div className="mt-8">
         <h2 className="text-xl font-bold mb-4">Albums</h2>
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {albums.map((album) => (
+          {albums?.map((album) => (
             <li key={album.id} className="border rounded-xl p-4">
               <Link to={`/albums/${album.id}`}>
                 <h3 className="font-semibold ">{album.title}</h3>
