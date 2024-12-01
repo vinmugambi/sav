@@ -11,6 +11,8 @@ type SessionFlashData = {
   error: string;
 };
 
+const secrets = (process.env.COOKIE_SECRETS ?? "n3v3r,Mind").split(",");
+
 export const sessionStorage = createCookieSessionStorage<
   Authed,
   SessionFlashData
@@ -18,10 +20,10 @@ export const sessionStorage = createCookieSessionStorage<
   cookie: {
     name: "__session",
     httpOnly: true,
-    maxAge: 60,
+    maxAge: 86_400, // one day
     path: "/",
     sameSite: "lax",
-    secrets: ["n3v3r Mind"],
+    secrets,
     secure: true,
   },
 });
@@ -39,6 +41,8 @@ export async function createSessionAndRedirect(
   if (user.accessToken) session.set("accessToken", user.accessToken);
 
   throw redirect(redirectPath, {
-    headers: { "Set-Cookie": await sessionStorage.commitSession(session) },
+    headers: {
+      "Set-Cookie": await sessionStorage.commitSession(session),
+    },
   });
 }
