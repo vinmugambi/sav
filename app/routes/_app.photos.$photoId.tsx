@@ -1,7 +1,8 @@
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { Link, useFetcher, useLoaderData } from "@remix-run/react";
 import { useEffect, useState } from "react";
-import { getData } from "~/api";
+import Spinner from "~/components/Spinner";
+import { getData } from "~/services/api.server";
 import type { Photo } from "~/types";
 
 export const loader: LoaderFunction = async ({ params }) => {
@@ -90,8 +91,14 @@ export default function PhotoPage() {
               className="border rounded-xl p-2 mb-4"
             />
             <div className="flex gap-2">
-              <button type="submit" disabled={isSubmitting} className="primary">
-                Save
+              <button type="submit" className="primary" disabled={isSubmitting}>
+                {isSubmitting ? (
+                  <>
+                    <Spinner /> Saving...
+                  </>
+                ) : (
+                  "Save"
+                )}
               </button>
               <button
                 type="button"

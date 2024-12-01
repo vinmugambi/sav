@@ -1,6 +1,6 @@
 import type { LoaderFunction } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
-import { getData } from "~/api";
+import { getData } from "~/services/api.server";
 import type { Album, User } from "~/types";
 
 export const loader: LoaderFunction = async ({ params }) => {
