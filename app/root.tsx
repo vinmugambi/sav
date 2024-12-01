@@ -1,4 +1,3 @@
-import { captureRemixErrorBoundaryError, withSentry } from "@sentry/remix";
 import type { ActionFunctionArgs, LinksFunction } from "@remix-run/node";
 import {
   isRouteErrorResponse,
@@ -9,7 +8,9 @@ import {
   ScrollRestoration,
   useRouteError,
 } from "@remix-run/react";
+import { captureRemixErrorBoundaryError, withSentry } from "@sentry/remix";
 
+import PageErrorDisplay from "./components/PageErrorDisplay";
 import { authenticator } from "./services/auth.server";
 import { createSessionAndRedirect } from "./services/session.server";
 import "./tailwind.css";
@@ -75,28 +76,9 @@ export function ErrorBoundary() {
   captureRemixErrorBoundaryError(error);
 
   if (isRouteErrorResponse(error)) {
+    return <PageErrorDisplay statusCode={error.status} title={error.data} />;
+  } else
     return (
-      <main>
-        <h1>
-          {error.status} {error.statusText}
-        </h1>
-        <p>{error.data}</p>
-      </main>
+      <PageErrorDisplay statusCode={500} title={(error as Error)?.message} />
     );
-  } else if (error instanceof Error) {
-    return (
-      <main>
-        <h1>Error</h1>
-        <p>{error.message}</p>
-        <p>The stack trace is:</p>
-        <pre>{error.stack}</pre>
-      </main>
-    );
-  } else {
-    return (
-      <main>
-        <h1>Unknown Error</h1>
-      </main>
-    );
-  }
 }
