@@ -10,9 +10,9 @@ import { startTransition, StrictMode, useEffect } from "react";
 import { hydrateRoot } from "react-dom/client";
 
 Sentry.init({
-  dsn: "https://040ac451e718cb86335bcbe689544b60@o4508386322415616.ingest.de.sentry.io/4508386322808912",
+  dsn: process.env.SENTRY_DSN,
   tracesSampleRate: 1,
-
+  tracePropagationTargets: [/^https:\/\/gramally-prod\.vercel\.app/],
   integrations: [
     Sentry.browserTracingIntegration({
       useEffect,
