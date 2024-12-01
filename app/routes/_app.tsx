@@ -1,6 +1,7 @@
 import { LoaderFunctionArgs, redirect } from "@remix-run/node";
 import { Link, Outlet, useLoaderData, useNavigation } from "@remix-run/react";
-import Spinner from "~/components/Spinner";
+import LogoLink from "~/components/Logo";
+import { PageLoadingIndicator } from "~/components/Spinner";
 import { sessionStorage } from "~/services/session.server";
 
 export async function loader({ request }: LoaderFunctionArgs) {
@@ -21,9 +22,7 @@ export default function AppLayout() {
   return (
     <main>
       <nav className="flex justify-between mb-6 wrap items-center">
-        <div className="text-2xl font-bold font-serif text-gray-800">
-          GramAlly
-        </div>
+        <LogoLink />
         <div className="flex items-center gap-4">
           <p>{email}</p>
           <Link to={"/logout"} className="button neutral">
@@ -31,13 +30,7 @@ export default function AppLayout() {
           </Link>
         </div>
       </nav>
-      {isLoading ? (
-        <div className="h-[50vh] justify-center items-center">
-          <Spinner />
-        </div>
-      ) : (
-        <Outlet />
-      )}
+      {isLoading ? <PageLoadingIndicator /> : <Outlet />}
     </main>
   );
 }

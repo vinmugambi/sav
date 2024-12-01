@@ -47,7 +47,7 @@ describe("Album Page", () => {
 
     expect(await screen.findByText(testData.album.title)).toBeInTheDocument();
 
-    const userLink = screen.getByRole("link", { name: /user/i });
+    const userLink = screen.getByTitle(/user/i);
     expect(userLink).toHaveAttribute("href", `/users/${testData.album.userId}`);
   });
 

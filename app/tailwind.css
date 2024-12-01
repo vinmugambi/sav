@@ -29,6 +29,11 @@ a.button.primary {
   @apply bg-blue-500 text-white;
 }
 
+button.primary:hover,
+a.button.primary:hover {
+  @apply bg-blue-600 text-white;
+}
+
 button:disabled,
 a.button:disabled {
   @apply bg-blue-300 text-white;
@@ -36,5 +41,10 @@ a.button:disabled {
 
 button.neutral,
 a.button.neutral {
-  @apply bg-gray-200;
+  @apply bg-gray-100 text-blue-600;
+}
+
+button.neutral:hover,
+a.button.neutral:hover {
+  @apply bg-gray-50;
 }

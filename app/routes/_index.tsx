@@ -1,12 +1,14 @@
 import type { MetaFunction } from "@remix-run/node";
 import { LoaderFunctionArgs } from "@remix-run/node";
-import { Form, redirect } from "@remix-run/react";
+import { redirect } from "@remix-run/react";
 import { authenticator } from "~/services/auth.server";
 import {
   createSessionAndRedirect,
   sessionStorage,
 } from "~/services/session.server";
 
+import LoginForm from "~/components/LoginForm";
+import LogoLink from "~/components/Logo";
 import banner from "../images/banner.webp";
 
 export const meta: MetaFunction = () => {
@@ -19,45 +21,20 @@ export const meta: MetaFunction = () => {
 export default function LandingPage() {
   return (
     <main>
-      <header className="flex flex-col gap-8">
-        <div className="text-2xl text-center font-bold font-serif text-gray-800">
-          GramAlly
-        </div>
+      <header className="flex items-center flex-col gap-8">
+        <LogoLink />
 
-        <h1 className=" bottom-0 px-8 text-5xl text-center">
+        <h1 className="-mb-2 px-8 text-5xl text-center">
           Share, discover and organize memories
         </h1>
 
-        <div className="flex -mt-4 mb-4 justify-center gap-4 wrap">
-          <Form method="post" action=".?method=password">
-            <input
-              type="hidden"
-              autoComplete="email"
-              name="email"
-              value="test@gmail.com"
-              required
-            />
-            <input
-              value={"password"}
-              type="hidden"
-              name="password"
-              autoComplete="current-password"
-              required
-            />
-            <button className="neutral">Sign into test account</button>
-          </Form>
+        <LoginForm />
 
-          <Form method="post" action=".?method=github">
-            {" "}
-            <input type="hidden" name="strategy" value="github" />
-            <button className="primary">Sign in with Github</button>
-          </Form>
-        </div>
         <img
           alt="banner - four people cuddling"
-          className="rounded-3xl"
+          className="rounded-3xl mt-4"
           src={banner}
-        ></img>
+        />
       </header>
     </main>
   );

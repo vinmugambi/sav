@@ -1,6 +1,6 @@
 import { useFetcher } from "@remix-run/react";
-import Logo from "./Logo";
-import Spinner from "./Spinner";
+import LogoLink from "./Logo";
+import { Spinner } from "./Spinner";
 
 type PageErrorDisplayProps = {
   statusCode?: number;
@@ -27,7 +27,7 @@ export default function PageErrorDisplay({
 
   return (
     <main>
-      <Logo />
+      <LogoLink />
 
       <div className="mt-6 max-w-xl">
         <div className="text-sm uppercase">

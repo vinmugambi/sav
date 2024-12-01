@@ -1,9 +1,9 @@
-export default function Spinner() {
+export function Spinner({ size = 4 }: { size?: number }) {
   return (
     <div role="status">
       <svg
         aria-hidden="true"
-        className="w-4 h-4 text-gray-200 animate-spin  fill-blue-600"
+        className={`w-${size} h-${size} text-gray-200 animate-spin  fill-blue-600`}
         style={{ animationDuration: "500ms" }} // Faster spin
         viewBox="0 0 100 101"
         fill="none"
@@ -19,6 +19,14 @@ export default function Spinner() {
         />
       </svg>
       <span className="sr-only">Loading...</span>
+    </div>
+  );
+}
+
+export function PageLoadingIndicator() {
+  return (
+    <div className="flex h-[50vh] gap-2 justify-center items-center w-full">
+      <Spinner size={8} /> Loading...
     </div>
   );
 }
