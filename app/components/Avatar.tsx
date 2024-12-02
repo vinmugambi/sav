@@ -1,7 +1,7 @@
 export default function Avatar({ name }: { name: string }) {
   const initials = getInitials(name);
   return (
-    <div className="relative inline-flex items-center justify-center size-12 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+    <div className="relative inline-flex items-center justify-center size-12 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-800">
       <span className="font-medium text-gray-600 dark:text-gray-300">
         {initials}
       </span>
