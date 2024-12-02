@@ -41,10 +41,10 @@ a.button:disabled {
 
 button.neutral,
 a.button.neutral {
-  @apply bg-gray-100 text-blue-600;
+  @apply bg-gray-100 dark:bg-gray-900 text-blue-600;
 }
 
 button.neutral:hover,
 a.button.neutral:hover {
-  @apply bg-gray-50;
+  @apply bg-gray-50 dark:bg-gray-800;
 }

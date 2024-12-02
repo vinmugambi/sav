@@ -7,7 +7,7 @@ export default function ImageWithPlaceholder({ photo }: { photo: Photo }) {
   return (
     <div
       className={`w-full rounded-md overflow-hidden aspect-square ${
-        isLoading ? "animate-pulse bg-gray-200" : ""
+        isLoading ? "animate-pulse bg-gray-200 dark:bg-gray-800" : ""
       }`}
     >
       <img
