@@ -34,7 +34,7 @@ export default function UserPage() {
             {user.name}
           </Link>
           <div className="flex gap-2">
-            <div className="lowercase">{user.email}</div>
+            <div className="lowercase italic">{user.email}</div>
           </div>
         </div>
       </div>
@@ -43,7 +43,10 @@ export default function UserPage() {
         <h2 className="text-xl font-bold mb-4">Albums</h2>
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {albums?.map((album) => (
-            <li key={album.id} className="border rounded-xl p-4">
+            <li
+              key={album.id}
+              className="border dark:border-gray-800 rounded-xl p-4"
+            >
               <Link to={`/albums/${album.id}`}>
                 <h3 className="font-medium">{album.title}</h3>
               </Link>

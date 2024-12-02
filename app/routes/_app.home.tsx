@@ -29,7 +29,7 @@ export default function HomePage() {
       <h1>People</h1>
       <ul className="flex flex-col">
         {users.map((user) => (
-          <li key={user.id} className="border-b last:border-transparent py-2">
+          <li key={user.id} className="py-2">
             <div className="flex gap-4">
               <Avatar name={user.name} />
               <div>
@@ -40,7 +40,7 @@ export default function HomePage() {
                   {user.name}
                 </Link>
                 <div className="flex gap-2">
-                  <div>{user.email}</div>
+                  <div className="lowercase italic"> {user.email}</div>
                   <div>{user.albumCount} albums</div>
                 </div>
               </div>
