@@ -1,6 +1,7 @@
 import type { LoaderFunction } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import type { Album, User, UserWithAlbumCount } from "app/types";
+import Avatar from "~/components/Avatar";
 import { getData } from "~/services/api.server";
 
 // fetch user on the server side
@@ -30,8 +31,7 @@ export default function HomePage() {
         {users.map((user) => (
           <li key={user.id} className="border-b last:border-transparent py-2">
             <div className="flex gap-4">
-              <div className="h-12 w-12 bg-gray-400 rounded-full"></div>
-
+              <Avatar name={user.name} />
               <div>
                 <Link
                   to={`/users/${user.id}`}

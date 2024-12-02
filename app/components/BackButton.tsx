@@ -9,7 +9,7 @@ export default function BackButton({ to, ariaLabel }: BackButtonProps) {
   return (
     <Link
       title={ariaLabel}
-      className=" p-2  -ml-1 inline-block hover:bg-gray-100 rounded-full"
+      className=" p-2  -ml-1 inline-block hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full"
       to={to}
     >
       {/* left arrow icon */}
